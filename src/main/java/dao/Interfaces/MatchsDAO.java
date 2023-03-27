@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static beans.Match.initMatchs;
 import static dao.BDD.MatchRequestSQL.getMatchforTournoi;
+import static dao.Interfaces.Utils.initData;
 
 public class MatchsDAO implements IMatchs{
     @Override
@@ -24,5 +26,11 @@ public class MatchsDAO implements IMatchs{
 
     public List<Match> filtre(){
         return null;
+    }
+
+    @Override
+    public void ajouter(long idEpreuve, long vainqueur, long finaliste) {
+        MatchRequestSQL.addMatch(idEpreuve, vainqueur, finaliste);
+        initData();
     }
 }

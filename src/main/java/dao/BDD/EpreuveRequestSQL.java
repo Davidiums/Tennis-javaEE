@@ -7,20 +7,36 @@ import java.sql.SQLException;
 
 public abstract class EpreuveRequestSQL {
     private static final Connection conn = new DaoFactory("localhost:3306/tennis", "root", "").getConnection();
-    public static boolean addEpreuveNotMixte(int annee, String sexe,long idTournoi){
+    public static long addEpreuve(int annee, String sexe, long idTournoi) {
         PreparedStatement statement = null;
-        int nbModif = 0;
-        try{
-            statement = conn.prepareStatement("INSERT INTO epreuve(ANNEE, TYPE_EPREUVE, ID_TOURNOI) VALUES (?,?,?)");
-            statement.setInt(1,annee);
+        ResultSet resultSet = null;
+        long idEpreuve = -1;
+        try {
+            statement = conn.prepareStatement("INSERT INTO epreuve(ANNEE, TYPE_EPREUVE, ID_TOURNOI) VALUES (?,?,?)",
+                    PreparedStatement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, annee);
             statement.setString(2, sexe);
             statement.setLong(3, idTournoi);
-            nbModif=statement.executeUpdate();
-        }catch (SQLException e) {
+            statement.executeUpdate();
+            resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                idEpreuve = resultSet.getLong(1);
+            }
+        } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            // Fermer le ResultSet, le PreparedStatement et la connexion
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
-        return nbModif>0;
+        return idEpreuve;
     }
+
 
     public static boolean addEpreuveMixte(int annee, long idTournoi){
         PreparedStatement statement = null;

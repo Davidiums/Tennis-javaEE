@@ -1,8 +1,8 @@
 package Servlets.Matchs;
 
-import beans.Player;
-import beans.Tournoi;
-import beans.User;
+import beans.*;
+import dao.Interfaces.EpreuveDAO;
+import dao.Interfaces.MatchsDAO;
 import dao.Interfaces.PlayerDAO;
 import dao.Interfaces.TournoiDAO;
 import jakarta.servlet.*;
@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+
+import static dao.Interfaces.SessionUtils.isUserLoggedIn;
 
 @WebServlet(name = "ServletAjoutMatch", value = "/AjoutMatch")
 public class ServletAjoutMatch extends HttpServlet {
@@ -46,6 +48,22 @@ public class ServletAjoutMatch extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if (isUserLoggedIn(request)) {
+            long idTournoi = Long.parseLong(request.getParameter("tournoi"));
+            int annee = Integer.parseInt(request.getParameter("annee"));
+            String type = request.getParameter("type");
+            long idVainqueur = Long.parseLong(request.getParameter("vainqueur"));
+            long idFinaliste = Long.parseLong(request.getParameter("finaliste"));
+
+            EpreuveDAO epreuveDAO = new EpreuveDAO();
+            long idEpreuve = epreuveDAO.ajouter(idTournoi, annee, type);
+
+            MatchsDAO matchDAO = new MatchsDAO();
+            matchDAO.ajouter(idEpreuve, idVainqueur, idFinaliste);
+            response.sendRedirect("Matchs");
+        }
+            response.sendRedirect("Login");
 
     }
 }

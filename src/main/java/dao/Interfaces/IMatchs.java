@@ -10,4 +10,6 @@ public interface IMatchs {
      List<Match> getAllMatch();
 
      List<Match> filtre();
+
+     void ajouter(long idEpreuve, long vainqueur, long finaliste);
 }

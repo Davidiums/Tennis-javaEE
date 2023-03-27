@@ -95,6 +95,9 @@ public class Epreuve implements Comparable<Epreuve>{
     public Tournoi getTournoi() {
         return tournoi;
     }
+    public static void addEpreuve(Epreuve epreuve){
+        epreuves.add(epreuve);
+    }
 
 
 }

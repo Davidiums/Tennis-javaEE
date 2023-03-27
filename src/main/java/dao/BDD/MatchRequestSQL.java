@@ -1,9 +1,6 @@
 package dao.BDD;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 public abstract class MatchRequestSQL {
@@ -26,7 +23,7 @@ public abstract class MatchRequestSQL {
             e.printStackTrace();
         }
         return rs;
-    };
+    }
 
     public static ResultSet getAllMatch(){
         ResultSet rs = null;
@@ -38,7 +35,7 @@ public abstract class MatchRequestSQL {
             e.printStackTrace();
         }
         return rs;
-    };
+    }
 
     public static boolean addMatch(long idEpreuve, long idVainqueur, long idFinaliste) {
         boolean success = false;
@@ -55,14 +52,6 @@ public abstract class MatchRequestSQL {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            if (statement != null) {
-                try {
-                    statement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
         return success;
     }
@@ -70,7 +59,7 @@ public abstract class MatchRequestSQL {
     public static boolean updateMatch(long idMatch, long idVainqueur, long idFinaliste) {
         boolean success = false;
         PreparedStatement statement = null;
-        String query = "UPDATE match_tennis SET id_Vainqueur = ?, id_Finaliste = ? WHERE id_Match = ?";
+        String query = "UPDATE match_tennis SET id_Vainqueur = ?, id_Finaliste = ? WHERE id = ?";
         try {
             statement = conn.prepareStatement(query);
             statement.setLong(1, idVainqueur);
@@ -154,5 +143,4 @@ public abstract class MatchRequestSQL {
         }
         return success;
     }
-
 }
