@@ -6,7 +6,9 @@
 
     <%@include file="bootstrapHeader.jsp" %>
     <title>Tournois</title>
-    <%@include file="Menu.jsp" %>
+    <jsp:include page="Menu.jsp">
+        <jsp:param name="searchServlet" value="Matchs" />
+    </jsp:include>
 </head>
 <body>
 

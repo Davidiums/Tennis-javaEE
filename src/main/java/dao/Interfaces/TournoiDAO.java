@@ -1,10 +1,12 @@
 package dao.Interfaces;
 
+import beans.Player;
 import beans.Tournoi;
 import dao.BDD.TournoisRequestSQL;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static dao.BDD.TournoisRequestSQL.*;
 
@@ -26,5 +28,12 @@ public class TournoiDAO implements ITournoi{
 
     public List<Tournoi> getAllTournoi(){
         return new ArrayList<>(Tournoi.getAllTournoi());
+    }
+
+    @Override
+    public List<Tournoi> rechercher(String txt) {
+        return Tournoi.getAllTournois().stream().filter(tournoi ->
+                        (tournoi.toString().toUpperCase()).contains((txt.toUpperCase())))
+                .collect(Collectors.toList());
     }
 }

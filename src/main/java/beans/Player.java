@@ -110,4 +110,8 @@ public class Player implements Comparable<Player> {
         return players;
     }
 
+    @Override
+    public String toString() {
+        return id+" "+nom+" "+prenom+" "+sexe;
+    }
 }

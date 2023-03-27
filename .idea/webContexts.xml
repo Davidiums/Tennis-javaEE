@@ -6,8 +6,10 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/SignUp.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Tournoi.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/AjoutMatch.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/ListJoueur.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/Log.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/Matchs.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/Menu.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/Tournoi.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/ajouterJoueur.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/listJoueur.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF" />

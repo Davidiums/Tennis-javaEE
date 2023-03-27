@@ -88,4 +88,9 @@ public class Tournoi implements Comparable<Tournoi> {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return nom+" "+ code+" "+ id;
+    }
 }

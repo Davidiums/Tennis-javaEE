@@ -18,10 +18,15 @@ public class ServletEpreuve extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (isUserLoggedIn(request)){
+            String search = request.getParameter("search");
             EpreuveDAO epreuveDAO = new EpreuveDAO();
             List<Epreuve> epreuves = epreuveDAO.lister();
-            request.setAttribute("epreuves", epreuves);
-            this.getServletContext().getRequestDispatcher("/WEB-INF/Views/Epreuves.jsp").forward(request,response);
+            if(search != null && !search.isEmpty()) {
+                request.setAttribute("epreuves", epreuveDAO.rechercher(search));
+            } else {
+                request.setAttribute("epreuves", epreuves);
+            }
+                this.getServletContext().getRequestDispatcher("/WEB-INF/Views/Epreuves.jsp").forward(request, response);
         }else{
             response.sendRedirect("Login");
         }

@@ -23,9 +23,14 @@ public class ServletMatchs extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (isUserLoggedIn(request)) {
+            String search = request.getParameter("search");
             MatchsDAO matchDAO = new MatchsDAO();
             List<Match> matchs = matchDAO.getAllMatch();
-            request.setAttribute("matchs", matchs);
+            if(search != null && !search.isEmpty()) {
+                request.setAttribute("matchs", matchDAO.rechercher(search));
+            } else {
+                request.setAttribute("matchs", matchs);
+            }
             this.getServletContext().getRequestDispatcher("/WEB-INF/Views/Matchs.jsp").forward(request, response);
         }else{
             response.sendRedirect("Login");

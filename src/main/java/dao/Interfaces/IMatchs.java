@@ -1,6 +1,7 @@
 package dao.Interfaces;
 
 import beans.Match;
+import beans.Player;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface IMatchs {
      List<Match> filtre();
 
      void ajouter(long idEpreuve, long vainqueur, long finaliste);
+
+     List <Match> rechercher(String txt);
 }

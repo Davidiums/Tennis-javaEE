@@ -1,5 +1,6 @@
 package dao.Interfaces;
 
+import beans.Player;
 import beans.Tournoi;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface ITournoi {
     boolean deleteTournoi(long id);
 
     List<Tournoi> getAllTournoi();
+    List <Tournoi> rechercher(String txt);
 }

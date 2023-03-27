@@ -78,4 +78,9 @@ public class Match implements Comparable<Match> {
     public static TreeSet<Match> getAllMatch(){
         return matches;
     }
+
+    @Override
+    public String toString() {
+        return id + " " + epreuve + " " + finaliste + " " + vainqueur;
+    }
 }

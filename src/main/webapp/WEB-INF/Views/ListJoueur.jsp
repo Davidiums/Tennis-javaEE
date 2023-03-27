@@ -12,7 +12,9 @@
     <!-- Bootstrap CSS -->
     <%@include file="bootstrapHeader.jsp" %>
     <title>Liste joueurs</title>
-    <%@include file="Menu.jsp" %>
+    <jsp:include page="Menu.jsp">
+        <jsp:param name="searchServlet" value="ListJoueur" />
+    </jsp:include>
 </head>
 <body>
 

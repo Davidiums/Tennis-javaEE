@@ -38,9 +38,9 @@
         <a class="nav-link" href="Logout">Deconnexion</a>
       </li>
     </ul>
-<%--    <form class="form-inline my-2 my-lg-0">--%>
-<%--      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">--%>
-<%--      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>--%>
-<%--    </form>--%>
+    <form class="form-inline my-2 my-lg-0" action="${param.searchServlet}" method="get">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name ="search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
 </nav>
