@@ -4,8 +4,6 @@ import dao.BDD.MatchRequestSQL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeSet;
 
 public class Match implements Comparable<Match> {
@@ -75,7 +73,7 @@ public class Match implements Comparable<Match> {
         return vainqueur;
     }
 
-    public static TreeSet<Match> getAllMatch(){
+    public static TreeSet<Match> getAll(){
         return matches;
     }
 

@@ -64,7 +64,7 @@ public class Tournoi implements Comparable<Tournoi> {
         tournois = newTournois;
     }
 
-    public static TreeSet<Tournoi> getAllTournois(){
+    public static TreeSet<Tournoi> getAll(){
         return tournois;
     }
 

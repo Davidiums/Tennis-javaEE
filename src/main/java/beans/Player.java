@@ -102,7 +102,7 @@ public class Player implements Comparable<Player> {
         return this.nom + " " + this.prenom;
     }
 
-    public static TreeSet<Player> getAllPlayers() {
+    public static TreeSet<Player> getAll() {
         return new TreeSet<>(players);
     }
 

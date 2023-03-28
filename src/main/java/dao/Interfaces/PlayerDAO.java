@@ -3,24 +3,20 @@ package dao.Interfaces;
 import Exceptions.BeanException;
 import Exceptions.DaoException;
 import beans.Player;
-import dao.BDD.PlayerRequestSQL;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static dao.BDD.PlayerRequestSQL.*;
-import static java.util.Collections.addAll;
 
 public class PlayerDAO implements IPlayer {
      public List<Player> lister() {
-        return new ArrayList<>(Player.getAllPlayers());
+        return new ArrayList<>(Player.getAll());
     }
 
     public List<Player> listerFemme() {
-        return Player.getAllPlayers().stream().filter(player -> "F".equals(player.getSexe())).collect(Collectors.toList());
+        return Player.getAll().stream().filter(player -> "F".equals(player.getSexe())).collect(Collectors.toList());
     }
 
     @Override
@@ -69,13 +65,13 @@ public class PlayerDAO implements IPlayer {
 
     @Override
     public List<Player> rechercher(String txt) {
-        return Player.getAllPlayers().stream().filter(player ->
+        return Player.getAll().stream().filter(player ->
                 ((player.getNom()+" "+player.getPrenom()+" "+player.getId()).toUpperCase())
                         .contains((txt.toUpperCase())))
                 .collect(Collectors.toList());
     }
 
     public List<Player> listerHomme() {
-        return Player.getAllPlayers().stream().filter(player -> "H".equals(player.getSexe())).collect(Collectors.toList());
+        return Player.getAll().stream().filter(player -> "H".equals(player.getSexe())).collect(Collectors.toList());
     }
 }

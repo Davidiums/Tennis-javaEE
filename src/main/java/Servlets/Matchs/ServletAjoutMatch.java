@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import static dao.Interfaces.SessionUtils.isUserAdmin;
 import static dao.Interfaces.SessionUtils.isUserLoggedIn;
 
 @WebServlet(name = "ServletAjoutMatch", value = "/AjoutMatch")
@@ -49,7 +50,7 @@ public class ServletAjoutMatch extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if (isUserLoggedIn(request)) {
+        if (isUserAdmin(request)) {
             long idTournoi = Long.parseLong(request.getParameter("tournoi"));
             int annee = Integer.parseInt(request.getParameter("annee"));
             String type = request.getParameter("type");
@@ -62,8 +63,9 @@ public class ServletAjoutMatch extends HttpServlet {
             MatchsDAO matchDAO = new MatchsDAO();
             matchDAO.ajouter(idEpreuve, idVainqueur, idFinaliste);
             response.sendRedirect("Matchs");
-        }
+        }else {
             response.sendRedirect("Login");
+        }
 
     }
 }

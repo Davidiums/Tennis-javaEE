@@ -11,6 +11,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+import static dao.Interfaces.SessionUtils.isUserAdmin;
+
 @WebServlet(name = "ServletAjouterJoueur", value = "/AjouterJoueur")
 public class ServletAjouterJoueur extends HttpServlet {
     @Override
@@ -28,22 +30,24 @@ public class ServletAjouterJoueur extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nom = request.getParameter("txtNom");
-        String prenom = request.getParameter("txtPrenom");
-        String sexe = request.getParameter("opSexe");
-        if (!nom.isEmpty() && !prenom.isEmpty() && !sexe.isEmpty()){
-            PlayerDAO playerDAO = new PlayerDAO();
-            try {
-                Player player = new Player(nom, prenom, sexe);
-                playerDAO.ajouterJoueur(player);
-                response.sendRedirect("ListJoueur");
-            } catch (DaoException | BeanException e) {
-                request.setAttribute("exception", e);
-                this.getServletContext().getRequestDispatcher("/WEB-INF/Views/Error.jsp").forward(request,response);
+        if(isUserAdmin(request)){
+            String nom = request.getParameter("txtNom");
+            String prenom = request.getParameter("txtPrenom");
+            String sexe = request.getParameter("opSexe");
+            if (!nom.isEmpty() && !prenom.isEmpty() && !sexe.isEmpty()){
+                PlayerDAO playerDAO = new PlayerDAO();
+                try {
+                    Player player = new Player(nom, prenom, sexe);
+                    playerDAO.ajouterJoueur(player);
+                    response.sendRedirect("ListJoueur");
+                } catch (DaoException | BeanException e) {
+                    request.setAttribute("exception", e);
+                    this.getServletContext().getRequestDispatcher("/WEB-INF/Views/Error.jsp").forward(request,response);
+                }
             }
-        }
-        else {
-            this.getServletContext().getRequestDispatcher("AjouterJoueur");
+            else {
+                this.getServletContext().getRequestDispatcher("AjouterJoueur");
+            }
         }
     }
 }

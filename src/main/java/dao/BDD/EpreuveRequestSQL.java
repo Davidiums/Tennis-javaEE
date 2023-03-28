@@ -24,17 +24,8 @@ public abstract class EpreuveRequestSQL {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } finally {
-            // Fermer le ResultSet, le PreparedStatement et la connexion
-            try {
-                if (resultSet != null) resultSet.close();
-                if (statement != null) statement.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
         }
-        return idEpreuve;
+            return idEpreuve;
     }
 
 

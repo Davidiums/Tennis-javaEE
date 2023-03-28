@@ -8,7 +8,6 @@ import java.util.TreeSet;
 
 import static beans.Tournoi.getTournoiById;
 import static beans.Tournoi.initTournois;
-import static dao.BDD.EpreuveRequestSQL.getAllEpreuves;
 
 public class Epreuve implements Comparable<Epreuve>{
     private long id;
@@ -57,7 +56,7 @@ public class Epreuve implements Comparable<Epreuve>{
         epreuves = newEpreuves;
     }
 
-    public static TreeSet<Epreuve> getAllEpreuves(){
+    public static TreeSet<Epreuve> getAll(){
         return epreuves;
     }
 

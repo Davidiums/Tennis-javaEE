@@ -49,8 +49,6 @@
                     <td><c:out value="${match.getEpreuve().getId()}"/></td>
                     <td>
 <%--                        <c:if test="${not empty sessionScope.user and sessionScope.user.getProfil() == 1}">--%>
-<%--                            <button type="button" class="btn btn-outline-primary modify" data-id="<c:out value='${match.getId()}'/>">Modifier--%>
-<%--                            </button>--%>
 <%--                            <button type="button" class="btn btn-outline-warning delete" data-id="<c:out value='${match.getId()}'/>">Supprimer--%>
 <%--                            </button>--%>
 <%--                        </c:if>--%>

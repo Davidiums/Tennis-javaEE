@@ -3,7 +3,7 @@ package Tests;
 import beans.Match;
 import beans.Player;
 
-import static beans.Epreuve.getAllEpreuves;
+import static beans.Epreuve.getAll;
 import static beans.Epreuve.initEpreuves;
 import static beans.Match.initMatchs;
 import static beans.Player.initPlayers;
@@ -16,10 +16,10 @@ public class TestEpreuve {
         System.out.println(getAllTournoi());
 
         initEpreuves();
-        System.out.println(getAllEpreuves());
+        System.out.println(getAll());
 
         initPlayers();
-        System.out.println(Player.getAllPlayers());
+        System.out.println(Player.getAll());
 
         initMatchs();
         System.out.println(Match.getAllMatchs());
