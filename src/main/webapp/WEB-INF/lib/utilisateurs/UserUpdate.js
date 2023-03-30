@@ -52,11 +52,11 @@ function endModify(login, role, row, oldButtons) {
     row.cells[1].innerHTML = login;
     row.cells[2].innerHTML = '';
     if (role == 1) {
-        row.cells[2].textContent = 'Admin';
+        row.cells[3].textContent = 'Admin';
     } else if (role == 2) {
-        row.cells[2].textContent = 'Utilisateur';
+        row.cells[3].textContent = 'Utilisateur';
     }
-    row.cells[3].innerHTML = '*********';
+    row.cells[2].innerHTML = '*********';
     row.cells[4].innerHTML = '';
     oldButtons.forEach((button, index) => {
         if (index > 0) {

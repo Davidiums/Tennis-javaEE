@@ -19,12 +19,12 @@
         <h1>Liste des matchs</h1>
 
     </div>
-    <label for="annee">Année</label>
-    <select id="annee">
-        <c:forEach var="annee" items="${listeAnnee}">
-            <option value="${escapeHtml(annee)}">${escapeHtml(annee)}</option>
-        </c:forEach>
-    </select>
+<%--    <label for="annee">Année</label>--%>
+<%--    <select id="annee">--%>
+<%--        <c:forEach var="annee" items="${listeAnnee}">--%>
+<%--            <option value="${escapeHtml(annee)}">${escapeHtml(annee)}</option>--%>
+<%--        </c:forEach>--%>
+<%--    </select>--%>
 
 
         <table class="table">

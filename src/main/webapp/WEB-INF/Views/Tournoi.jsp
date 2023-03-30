@@ -5,12 +5,12 @@
 
 <head>
     <%@include file="bootstrapHeader.jsp" %>
-    <jsp:include page="Menu.jsp">
-        <jsp:param name="searchServlet" value="Tournois" />
-    </jsp:include>
     <title>Tournois</title>
 </head>
 <body>
+    <jsp:include page="Menu.jsp">
+        <jsp:param name="searchServlet" value="Tournois" />
+    </jsp:include>
 <div class="container">
     <table class="table">
         <thead>

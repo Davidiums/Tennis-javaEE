@@ -5,15 +5,10 @@
 
 <html lang="fr">
 <head>
-    <!-- Required meta tags -->
-    <%--    <meta charset="utf-8">--%>
-    <%--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
-
-    <!-- Bootstrap CSS -->
     <%@include file="bootstrapHeader.jsp" %>
     <title>Liste joueurs</title>
     <jsp:include page="Menu.jsp">
-        <jsp:param name="searchServlet" value="ListJoueur" />
+        <jsp:param name="searchServlet" value="ListJoueur"/>
     </jsp:include>
 </head>
 <body>
@@ -37,7 +32,8 @@
     <form action="ListJoueur" method="get">
         <div class="form-group">
             <label for="search">Rechercher:</label>
-            <input type="text" class="form-control" id="search" name="search" placeholder="Entrez un nom, un prénom ou un ID">
+            <input type="text" class="form-control" id="search" name="search"
+                   placeholder="Entrez un nom, un prénom ou un ID">
         </div>
         <button type="submit" class="btn btn-primary">Rechercher</button>
     </form>
@@ -73,9 +69,11 @@
                 <td><c:out value="${joueur.getSexe()}"/></td>
                 <td>
                     <c:if test="${not empty sessionScope.user and sessionScope.user.getProfil() == 1}">
-                        <button type="button" class="btn btn-outline-primary modify" data-id="<c:out value='${joueur.id}'/>">Modifier
+                        <button type="button" class="btn btn-outline-primary modify"
+                                data-id="<c:out value='${joueur.id}'/>">Modifier
                         </button>
-                        <button type="button" class="btn btn-outline-warning delete" data-id="<c:out value='${joueur.id}'/>">Supprimer
+                        <button type="button" class="btn btn-outline-warning delete"
+                                data-id="<c:out value='${joueur.id}'/>">Supprimer
                         </button>
                     </c:if>
                 </td>
@@ -86,28 +84,21 @@
 </div>
 
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<%--    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>--%>
-<%--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>--%>
-<%--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>--%>
 <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script>
 <%@include file="ScriptFooter.jsp" %>
 <script>
-    <%@include file="../lib/joueursActionListener.js" %>
+    <%@include file="../lib/players/joueursActionListener.js" %>
 </script>
 <script>
     var login = '<%= ((User)session.getAttribute("user")).getLogin() %>';
 </script>
 
 <script>
-    <%@include file="../lib/DeletPlayer.js" %>
+    <%@include file="../lib/players/DeletPlayer.js" %>
 </script>
 <script>
-    <%@include file="../lib/ModifyPlayer.js" %>
+    <%@include file="../lib/players/ModifyPlayer.js" %>
 </script>
-
-
 </body>
 </html>
 

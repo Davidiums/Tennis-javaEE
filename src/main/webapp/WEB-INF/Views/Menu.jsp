@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="#">Menu</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,15 +24,16 @@
       </li>
 
 
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ajouter</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown02">
-          <a class="dropdown-item" href="AjouterJoueur">Ajouter joueur</a>
-          <a class="dropdown-item" href="AjoutTournoi">Ajouter tournoi</a>
-          <a class="dropdown-item" href="AjoutMatch">Ajouter match</a>
-        </div>
-      </li>
+      <c:if test="${not empty sessionScope.user and sessionScope.user.getProfil() == 1}">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ajouter</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown02">
+            <a class="dropdown-item" href="AjouterJoueur">Ajouter joueur</a>
+            <a class="dropdown-item" href="AjoutTournoi">Ajouter tournoi</a>
+            <a class="dropdown-item" href="AjoutMatch">Ajouter match</a>
+          </div>
+        </li>
+      </c:if>
 
 
       <li class="nav-item">
